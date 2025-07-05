@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+body {
+  font-family: "Outfit", sans-serif;
+  color: #fff;
+}
+
+.font-fredoka {
+  font-family: "Fredoka", sans-serif;
+}
+
+.hero-image {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background-image: url("https://framerusercontent.com/images/VqQfgW10s8zI7QjHo9vMsC3olI.png");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-form {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  background-image: url("/logo.png");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animation Logo */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* index.css */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #facc15; /* amarillo Tailwind */
+  border-radius: 4px;
+}
+
+.custom-scroll {
+  scrollbar-color: #facc15 #1a1a1a;
+  scrollbar-width: thin;
+}
+
+
+@theme {
+  --color-primary: #2e1302;
+  --color-background: #3b1a05;
+}
