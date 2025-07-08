@@ -48,7 +48,7 @@ export const Footer = () => {
                 </div>
                 <hr />
                 <div className="space-y-5">
-                    <p>© 2025 Radio Bears. Todos los derechos reservados.</p>
+                    <p>© 2024 RadioBears. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>
