@@ -40,5 +40,6 @@ export const hosts = [
 
 
 export const associates = [
-    { id: 1, img: "https://framerusercontent.com/images/Q0G3AVWL0iqOOHJmKHxI2BjXQ2Y.png?scale-down-to=512" }
+    { id: 1, img: "https://framerusercontent.com/images/Q0G3AVWL0iqOOHJmKHxI2BjXQ2Y.png?scale-down-to=512" },
+    { id: 2, img: "/impetus.png" }
 ]

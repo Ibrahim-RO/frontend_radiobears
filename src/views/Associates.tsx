@@ -10,7 +10,7 @@ export const Associates = () => {
             <img
               src={associate.img}
               alt={associate.id.toString()}
-              className="w-60"
+              className={associate.id === 2 ? 'w-65': 'w-45'}
             />
           </div>
         ))}
