@@ -2,15 +2,14 @@ import { Link } from "react-router-dom"
 import { navigation } from "../data"
 import Kick from "../assets/Kick"
 import X from "../assets/X"
-import YouTube from "../assets/Youtube"
-import Discord from "../assets/Discord"
 
 export const Footer = () => {
     const socialMedias = [
-        { name: "X", icon: <X />, url: "https://x.com/portal" },
-        { name: "Youtube", icon: <YouTube className="size-8" />, url: "https://www.youtube.com/portal" },
-        { name: "Discord", icon: <Discord className="size-8" />, url: "https://discord.com/invite/QqyjD6t3" },
-        { name: "Kick", icon: <Kick className="size-10" />, url: "https://kick.com/portal" },
+        { name: "X", icon: <X />, url: "https://x.com/TheRadioBear" },
+        { name: "Youtube", icon: <i className="fa-brands fa-youtube text-3xl"></i>, url: "https://www.youtube.com/channel/UCB2WkR_4U9Gn-2NmwB7Clpg" },
+        { name: "Kick", icon: <Kick className="size-10" />, url: "https://kick.com/radiobearss" },
+        { name: "Tiktok", icon: <i className="fa-brands fa-tiktok"></i>, url: "http://tiktok.com/@radiobearss" },
+        { name: "Instagram", icon: <i className="fa-brands fa-instagram text-3xl"></i>, url: "#" },
     ]
 
     return (
@@ -41,7 +40,7 @@ export const Footer = () => {
                                     <div className="text-white text-2xl">
                                         {socialMedia.icon}
                                     </div>
-                                </div>  
+                                </div>
                             </a>
                         ))}
                     </div>

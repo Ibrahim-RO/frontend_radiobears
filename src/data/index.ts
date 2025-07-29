@@ -31,15 +31,41 @@ export const hosts = [
   },
   {
     id: 3,
-    name: "Caos",
-    age: "33 años",
-    description: "Él es el especialista en música electronica, Cao$$$$",
-    img: "https://framerusercontent.com/images/DyxsNClxo8PncvCzQQfGu4GrCM.webp?scale-down-to=512"
+    name: ".:atomico.:",
+    age: "404",
+    description: "Administrador oficial de Radio Bears",
+    img: "/atomico.jpg"
   },
 ]
 
 
 export const associates = [
-    { id: 1, img: "https://framerusercontent.com/images/Q0G3AVWL0iqOOHJmKHxI2BjXQ2Y.png?scale-down-to=512" },
-    { id: 2, img: "/impetus.png" }
+  { id: 1, img: "https://framerusercontent.com/images/Q0G3AVWL0iqOOHJmKHxI2BjXQ2Y.png?scale-down-to=512" },
+  { id: 2, img: "/impetus.png" }
+]
+
+export const youtubeVideos = [
+    {
+    id: 1,
+    url: "https://www.youtube.com/embed/sbD_c_xxPkQ?si=KHYuoUq5gH92i7tT",
+    title: "Fiesta! 7.12.25",
+    description: "RadioBears.com",
+    youtube_link: "https://www.youtube.com/watch?v=sbD_c_xxPkQ",
+    short: false
+  },
+  {
+    id: 2,
+    url: "https://www.youtube.com/embed/4x3yAYk4OnA?si=UoqforeLfX8NWRIQ",
+    title: "Torneo de box presentacion",
+    description: "Gran evento de Box",
+    youtube_link: "https://www.youtube.com/watch?v=4x3yAYk4OnA",
+    short: false
+  },
+  {
+    id: 3,
+    url: "https://youtube.com/shorts/KrFV-4TzuiQ?si=xPG4iNRXtxSXsng4",
+    title: "Short",
+    youtube_link: "https://youtube.com/shorts/KrFV-4TzuiQ?si=xPG4iNRXtxSXsng4",
+    short: true
+  }
 ]

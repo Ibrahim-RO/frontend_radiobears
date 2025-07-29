@@ -92,7 +92,7 @@ export const Header = () => {
                             Cerrar sesión
                         </button>
                     ) : (
-                        <NavLink to="/login" className="w-24 bg-yellow-400 hover:bg-yellow-500 px-2.5 py-1.5 rounded-xl font-fredoka lg:text-lg text-black uppercase cursor-pointer">
+                        <NavLink to="/login" className="w-24 bg-yellow-400 hover:bg-yellow-500 px-2.5 py-1.5 rounded-xl font-fredoka lg:text-lg text-black uppercase cursor-pointer" onClick={() => setMenuOpen(false)}>
                             Acceder
                         </NavLink>
                     )}

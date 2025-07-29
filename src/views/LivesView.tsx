@@ -6,7 +6,7 @@ export const LivesView = () => {
       <div className="w-full flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5 md:px-10">
         <h2 className='text-2xl md:text-4xl lg:text-5xl font-fredoka text-center lg:text-left font-bold'>Estamos en vivo, ¿te lo vas a perder?</h2>
         <a 
-          href="https://kick.com/radiobears" 
+          href="https://kick.com/radiobearss" 
           target="_blank" title="Kick RadioBeard"
           className="bg-green-600  hover:bg-green-700 mx-auto lg:mx-0 text-sm md:text-base text-white p-2 md:p-3 rounded-lg flex justify-center items-center gap-2 cursor-pointer"
         >

@@ -5,7 +5,8 @@ export const SocialMediasView = () => {
   const socialMedias = [
     { name: "X", icon: <X />, url: "https://x.com/TheRadioBear" },
     { name: "Youtube", icon: <i className="fa-brands fa-youtube text-3xl"></i>, url: "https://www.youtube.com/channel/UCB2WkR_4U9Gn-2NmwB7Clpg" },
-    { name: "Kick", icon: <Kick className="size-10" />, url: "https://kick.com/radiobears" },
+    { name: "Kick", icon: <Kick className="size-10" />, url: "https://kick.com/radiobearss" },
+    { name: "Tiktok", icon: <i className="fa-brands fa-tiktok"></i>, url: "http://tiktok.com/@radiobearss" },
     { name: "Instagram", icon: <i className="fa-brands fa-instagram text-3xl"></i>, url: "#" },
   ]
 
@@ -13,6 +14,7 @@ export const SocialMediasView = () => {
     X: "bg-neutral-900 text-white hover:bg-neutral-800",
     Youtube: "bg-[#FF0000] text-white hover:bg-[#cc0000]", 
     Kick: "bg-green-600 text-black hover:bg-green-700 ", 
+    Tiktok: "bg-neutral-900 text-white hover:bg-neutral-800",
     Instagram: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white hover:brightness-90",
   };
 
