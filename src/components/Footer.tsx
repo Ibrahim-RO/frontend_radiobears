@@ -7,9 +7,10 @@ export const Footer = () => {
     const socialMedias = [
         { name: "X", icon: <X />, url: "https://x.com/TheRadioBear" },
         { name: "Youtube", icon: <i className="fa-brands fa-youtube text-3xl"></i>, url: "https://www.youtube.com/channel/UCB2WkR_4U9Gn-2NmwB7Clpg" },
+        { name: "Discord", icon: <i className="fa-brands fa-discord text-3xl"></i>, url: "https://discord.gg/radiobears" },
         { name: "Kick", icon: <Kick className="size-10" />, url: "https://kick.com/radiobearss" },
         { name: "Tiktok", icon: <i className="fa-brands fa-tiktok"></i>, url: "http://tiktok.com/@radiobearss" },
-        { name: "Instagram", icon: <i className="fa-brands fa-instagram text-3xl"></i>, url: "#" },
+        { name: "Instagram", icon: <i className="fa-brands fa-instagram text-3xl"></i>, url: "https://www.instagram.com/radiobears?igsh=dXppcDR2MGpybGJp" },
     ]
 
     return (

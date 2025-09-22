@@ -10,7 +10,7 @@ export const Layout = () => {
   const isHome = useMemo(() => pathname === '/', [pathname])
 
   return (
-    <>
+    <div className='min-h-screen flex flex-col'>
       <Helmet>
         <script 
           async 
@@ -18,11 +18,13 @@ export const Layout = () => {
           crossOrigin="anonymous"
         ></script>
       </Helmet>
+
       <Header />
-      <main className={isHome ? '' : 'max-w-7xl mx-auto px-8 md:p-5 lg:p-0 py-5'}>
+      <main className={isHome ? '' : 'max-w-7xl mx-auto px-8 md:p-5 lg:p-0 py-5 flex-1'}>
         <Outlet />
       </main>
+
       <Footer />
-    </>
+    </div>
   )
 }

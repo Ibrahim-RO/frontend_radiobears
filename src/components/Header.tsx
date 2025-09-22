@@ -83,7 +83,6 @@ export const Header = () => {
                     <NavLink to='/events' onClick={() => setMenuOpen(false)}>Eventos</NavLink>
                     <NavLink to='/store' onClick={() => setMenuOpen(false)}>Tienda</NavLink>
                     <NavLink to='/social-medias' onClick={() => setMenuOpen(false)}>Redes sociales</NavLink>
-                    <NavLink to='/associates' onClick={() => setMenuOpen(false)}>Asociados</NavLink>
                     {state.isAuth ? (
                         <button
                             onClick={handleLogout}

@@ -15,27 +15,12 @@ export const IndexView = () => {
             <Chat />
           </div>
 
-          <div className="flex justify-center flex-col items-center gap-4">
-            <div className="w-full max-w-xl rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                src="https://canary.discord.com/widget?id=1302470720802263110&theme=dark"
-                width="100%"
-                height="550"
-                sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-                className="border-0"
-                title="Discord Widget"
-              />
-            </div>
+          <div>
+            <VideoCarousel />
           </div>
-
 
         </div>
       </section>
-
-      <VideoCarousel 
-        youtubeVideos={youtubeVideos}
-      />
-
 
     </>
   )

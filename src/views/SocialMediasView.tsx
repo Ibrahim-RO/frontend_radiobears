@@ -1,49 +1,62 @@
-import Kick from "../assets/Kick"
-import X from "../assets/X"
+import { useQuery } from "@tanstack/react-query"
+import type { JSX } from "react"
+import { getSocialMedias } from "../api"
 
 export const SocialMediasView = () => {
-  const socialMedias = [
-    { name: "X", icon: <X />, url: "https://x.com/TheRadioBear" },
-    { name: "Youtube", icon: <i className="fa-brands fa-youtube text-3xl"></i>, url: "https://www.youtube.com/channel/UCB2WkR_4U9Gn-2NmwB7Clpg" },
-    { name: "Kick", icon: <Kick className="size-10" />, url: "https://kick.com/radiobearss" },
-    { name: "Tiktok", icon: <i className="fa-brands fa-tiktok"></i>, url: "http://tiktok.com/@radiobearss" },
-    { name: "Instagram", icon: <i className="fa-brands fa-instagram text-3xl"></i>, url: "#" },
-  ]
 
+  const { data, isLoading } = useQuery({
+    queryKey: ["socialMedias"],
+    queryFn: getSocialMedias,
+  })
+
+  if (isLoading) return "Cargando..."
+
+  // Mapa de íconos
+  const iconMap: Record<string, JSX.Element> = {
+    X: <i className="fa-brands fa-x-twitter text-2xl"></i>,
+    Youtube: <i className="fa-brands fa-youtube text-3xl"></i>,
+    Kick: <i className="fa-brands fa-kickstarter text-2xl"></i>,
+    Discord: <i className="fa-brands fa-discord text-2xl"></i>,
+    Tiktok: <i className="fa-brands fa-tiktok text-2xl"></i>,
+    Instagram: <i className="fa-brands fa-instagram text-3xl"></i>,
+  }
+
+  // Mapa de colores
   const colorMap: Record<string, string> = {
-    X: "bg-neutral-900 text-white hover:bg-neutral-800",
-    Youtube: "bg-[#FF0000] text-white hover:bg-[#cc0000]", 
-    Kick: "bg-green-600 text-black hover:bg-green-700 ", 
-    Tiktok: "bg-neutral-900 text-white hover:bg-neutral-800",
-    Instagram: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white hover:brightness-90",
-  };
+    X: "bg-neutral-900 text-white",
+    Youtube: "bg-[#FF0000] text-white",
+    Kick: "bg-green-600 text-white",
+    Discord: "bg-[#5865F2] text-white",
+    Tiktok: "bg-neutral-900 text-white",
+    Instagram:
+      "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white",
+  }
 
+  const dataFilter = data?.filter( item => item.isActive )
 
   return (
-    <section className='mt-30 bg-yellow-100/15 rounded-2xl p-8 flex flex-col justify-between items-center gap-6'>
-      <h2 className='text-3xl md:text-4xl lg:text-5xl text-center font-fredoka font-bold'>Síguenos en Redes Sociales</h2>
-      <div className='flex flex-col justify-center items-center px-10 gap-5'>
-        {socialMedias.map((socialMedia, index) => (
-          <a
-            key={index}
-            href={socialMedia.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`w-60 md:w-80 flex items-center p-3 md:p-5 shadow-md rounded-2xl transition ${colorMap[socialMedia.name]}`}
-          >
-            <div className="size-10 flex items-center justify-center mr-4 px-7">
-              {/* Ícono con tamaño y color ajustados */}
-              <div className="text-white text-2xl">
-                {socialMedia.icon}
-              </div>
-            </div>
-            <div className="w-full font-medium text-center text-base md:text-lg text-white -ml-8">
-              {socialMedia.name}
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
+    <div className="w-full mt-30 space-y-5">
+      <h1 className="text-4xl font-extrabold uppercase">Redes sociales</h1>
+
+      {data?.length ? (
+        <div className="space-y-5">
+          {dataFilter?.map((social) => (
+            <>
+              <a
+                key={social.id}
+                href={social.url}
+                className={`w-[300px] md:w-[350px] flex items-center gap-4 p-5 rounded-2xl ${colorMap[social.name]}`}
+              >
+                {iconMap[social.name]}
+                <p className="text-lg">{social.name}</p>
+              </a>
+            </>
+
+          ))}
+        </div>
+      ) : (
+        <p className="text-gray-900">No hay redes sociales, añade uno</p>
+      )}
+    </div>
   )
 }
-

@@ -5,7 +5,6 @@ export const navigation = [
   { id: 4, name: "Eventos", to: "/events" },
   { id: 5, name: "Tienda", to: "/store" },
   { id: 6, name: "Redes Sociales", to: "/social-medias" },
-  { id: 7, name: "Asociados", to: "/associates" },
 ]
 
 export const events = [
@@ -45,8 +44,16 @@ export const associates = [
 ]
 
 export const youtubeVideos = [
-    {
+  {
     id: 1,
+    url: "https://www.youtube.com/embed/63eaod8Q3yg?si=vYxm4vfq4GC19H9T",
+    title: "Manada !",
+    description: "RadioBears.com",
+    youtube_link: "https://www.youtube.com/watch?v=63eaod8Q3yg",
+    short: false
+  },
+  {
+    id: 2,
     url: "https://www.youtube.com/embed/sbD_c_xxPkQ?si=KHYuoUq5gH92i7tT",
     title: "Fiesta! 7.12.25",
     description: "RadioBears.com",
@@ -54,7 +61,7 @@ export const youtubeVideos = [
     short: false
   },
   {
-    id: 2,
+    id: 3,
     url: "https://www.youtube.com/embed/4x3yAYk4OnA?si=UoqforeLfX8NWRIQ",
     title: "Torneo de box presentacion",
     description: "Gran evento de Box",
@@ -62,7 +69,7 @@ export const youtubeVideos = [
     short: false
   },
   {
-    id: 3,
+    id: 4,
     url: "https://youtube.com/shorts/KrFV-4TzuiQ?si=xPG4iNRXtxSXsng4",
     title: "Short",
     youtube_link: "https://youtube.com/shorts/KrFV-4TzuiQ?si=xPG4iNRXtxSXsng4",
