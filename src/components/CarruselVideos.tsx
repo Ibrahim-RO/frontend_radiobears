@@ -10,6 +10,8 @@ export const VideoCarousel = () => {
     queryFn: getAllVideos
   })
 
+  console.log(data)
+
   const containerRef = useRef<HTMLDivElement>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -65,7 +67,7 @@ export const VideoCarousel = () => {
                 >
                   <div className="bg-zinc-900 rounded-2xl shadow-xl overflow-hidden border border-zinc-700">
                     <div className="w-full h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px]">
-                      {video.short ? (
+                      {video.short === 'short' ? (
                         <div className='flex flex-col justify-center items-center p-4'>
                           <img src="/logo.png" alt="Logo" />
                           <p className='text-lg md:text-2xl font-bold text-white'>Para ver el short, da clic en el enlace</p>

@@ -1,6 +1,5 @@
 import { VideoCarousel } from "../components/CarruselVideos"
 import { Chat } from "../components/Chat"
-import { youtubeVideos } from "../data"
 
 export const IndexView = () => {
   return (

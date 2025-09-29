@@ -45,6 +45,7 @@ export const SocialMediasView = () => {
               <a
                 key={social.id}
                 href={social.url}
+                target="_blank"
                 className={`w-[300px] md:w-[350px] flex items-center gap-4 p-5 rounded-2xl ${colorMap[social.name]}`}
               >
                 {iconMap[social.name]}
