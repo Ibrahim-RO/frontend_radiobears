@@ -5,7 +5,7 @@ import { getAllVideos } from '../api'
 
 export const VideoCarousel = () => {
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["youtube"],
     queryFn: getAllVideos
   })
