@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { io, Socket } from "socket.io-client"
-import { PaperAirplaneIcon } from '@heroicons/react/24/solid'
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid"
 import clsx from "clsx"
 import { useAuth } from "../context/AuthContext"
 
@@ -21,7 +21,7 @@ export const Chat = () => {
   useEffect(() => {
     if (!state.isAuth) return
 
-    const socket = io(import.meta.env.VITE_API_URL || "http://localhost:4000", {
+    const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:4000", {
       auth: {
         token: localStorage.getItem("TOKEN_BEARS"),
       },
@@ -57,6 +57,39 @@ export const Chat = () => {
     setInput("")
   }
 
+  /** Agrupa los mensajes por día */
+  const groupMessagesByDate = (msgs: Message[]) => {
+    const groups: Record<string, Message[]> = {}
+
+    msgs.forEach((msg) => {
+      const date = new Date(msg.createdAt)
+      const key = date.toLocaleDateString("es-MX", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+      if (!groups[key]) groups[key] = []
+      groups[key].push(msg)
+    })
+
+    return groups
+  }
+
+  /** Etiqueta de fecha (Hoy, Ayer o fecha completa) */
+  const getDateLabel = (dateStr: string) => {
+    const today = new Date()
+    const date = new Date(dateStr)
+    const diffDays = Math.floor(
+      (today.setHours(0, 0, 0, 0) - date.setHours(0, 0, 0, 0)) / (1000 * 60 * 60 * 24)
+    )
+
+    if (diffDays === 0) return "Hoy"
+    if (diffDays === 1) return "Ayer"
+    return date.toLocaleDateString("es-MX", { day: "2-digit", month: "long", year: "numeric" })
+  }
+
+  const groupedMessages = groupMessagesByDate(messages)
+
   return (
     <div className="bg-[#18181b]/90 backdrop-blur-md text-white rounded-2xl max-w-xl mx-auto p-5 shadow-lg border border-white/10 flex flex-col max-h-[600px]">
       <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
@@ -76,29 +109,43 @@ export const Chat = () => {
       {state.isAuth ? (
         <>
           {/* Contenedor con scroll para mensajes */}
-          <div className="flex-1 overflow-y-auto space-y-2 mb-4 pr-2 custom-scroll">
-            {messages.map((msg) => {
-              const isOwnMessage = msg.username === localStorage.getItem("USERNAME_BEARS")
-              return (
-                <div
-                  key={msg._id}
-                  className={clsx(
-                    "flex flex-col p-3 rounded-xl break-words",
-                    isOwnMessage
-                      ? "bg-yellow-600 text-white self-end ml-auto rounded-br-none"
-                      : "bg-gray-800 text-gray-200 self-start mr-auto rounded-bl-none"
-                  )}
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-sm truncate max-w-[70%]">{msg.username}</span>
-                    <span className="text-[10px] text-gray-400 ml-2 whitespace-nowrap">
-                      {new Date(msg.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                    </span>
-                  </div>
-                  <div className="text-sm leading-tight whitespace-pre-wrap">{msg.content}</div>
+          <div className="flex-1 overflow-y-auto space-y-6 mb-4 pr-2 custom-scroll">
+            {Object.entries(groupedMessages).map(([dateKey, msgs]) => (
+              <div key={dateKey}>
+                {/* Separador de fecha */}
+                <div className="flex justify-center my-2">
+                  <span className="bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full">
+                    {getDateLabel(msgs[0].createdAt)}
+                  </span>
                 </div>
-              )
-            })}
+
+                {msgs.map((msg) => {
+                  const isOwnMessage = msg.username === localStorage.getItem("USERNAME_BEARS")
+                  return (
+                    <div
+                      key={msg._id}
+                      className={clsx(
+                        "flex flex-col p-3 rounded-xl break-words mb-2",
+                        isOwnMessage
+                          ? "bg-yellow-600 text-white self-end ml-auto rounded-br-none"
+                          : "bg-gray-800 text-gray-200 self-start mr-auto rounded-bl-none"
+                      )}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold text-sm truncate max-w-[70%]">{msg.username}</span>
+                        <span className="text-[10px] text-gray-400 ml-2 whitespace-nowrap">
+                          {new Date(msg.createdAt).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </span>
+                      </div>
+                      <div className="text-sm leading-tight whitespace-pre-wrap">{msg.content}</div>
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
             <div ref={messagesEndRef} />
           </div>
 

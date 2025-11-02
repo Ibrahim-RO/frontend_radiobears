@@ -30,7 +30,7 @@ export const SignUpView = () => {
   }
 
   return (
-    <section className='mt-30 bg-yellow-100/15 rounded-2xl p-8 flex flex-col justify-between items-center gap-6'>
+    <section className='mt-30 w-full md:w-lg bg-yellow-100/15 rounded-2xl p-8 flex flex-col justify-between items-center gap-6'>
       <div className="w-full bg-white/13 shadow-[0_0_5px_black] rounded-2xl sm:max-w-md">
         <div className="p-6 sm:p-8 space-y-6">
           <h2 className="text-2xl font-bold text-center text-white">
