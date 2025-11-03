@@ -72,19 +72,31 @@ export const Chat = () => {
       groups[key].push(msg)
     })
 
-    return groups
+    // Ordenar los grupos por fecha ascendente
+    const sortedEntries = Object.entries(groups).sort(
+      ([a], [b]) => new Date(a).getTime() - new Date(b).getTime()
+    )
+
+    return Object.fromEntries(sortedEntries)
   }
+
+  /** Verifica si dos fechas son el mismo día */
+  const isSameDay = (d1: Date, d2: Date) =>
+    d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate()
 
   /** Etiqueta de fecha (Hoy, Ayer o fecha completa) */
   const getDateLabel = (dateStr: string) => {
     const today = new Date()
     const date = new Date(dateStr)
-    const diffDays = Math.floor(
-      (today.setHours(0, 0, 0, 0) - date.setHours(0, 0, 0, 0)) / (1000 * 60 * 60 * 24)
-    )
 
-    if (diffDays === 0) return "Hoy"
-    if (diffDays === 1) return "Ayer"
+    if (isSameDay(today, date)) return "Hoy"
+
+    const yesterday = new Date()
+    yesterday.setDate(today.getDate() - 1)
+    if (isSameDay(yesterday, date)) return "Ayer"
+
     return date.toLocaleDateString("es-MX", { day: "2-digit", month: "long", year: "numeric" })
   }
 

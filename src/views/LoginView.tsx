@@ -19,27 +19,13 @@ export const LoginView = () => {
 
     const handleLogin = async (formData: LoginForm) => {
         try {
-            const { data } = await axios.post(
-                `${import.meta.env.VITE_API_URL}/auth/login`,
-                formData
-            )
-
-            // ✅ Verificar estructura esperada del token
-            if (!data?.token) {
-                toast.error("Respuesta inválida del servidor")
-                return
-            }
-
-            localStorage.setItem("TOKEN_BEARS", data.token)
-            dispatch({ type: "login" })
-            toast.success("Inicio de sesión exitoso")
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, formData)
+            localStorage.setItem('TOKEN_BEARS', data)
+            dispatch({ type: 'login' })
             navigate("/")
         } catch (error) {
-            if (isAxiosError(error)) {
-                const msg = error.response?.data?.error || "Error al iniciar sesión"
-                toast.error(msg)
-            } else {
-                toast.error("Error inesperado. Intenta nuevamente.")
+            if (isAxiosError(error) && error.message) {
+                toast.error(error.response?.data.error)
             }
         }
     }

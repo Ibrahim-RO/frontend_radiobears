@@ -9,6 +9,7 @@ import { SocialMediasView } from './views/SocialMediasView'
 import { Associates } from './views/Associates'
 import { SignUpView } from './views/SignUpView'
 import { LoginView } from './views/LoginView'
+import { NewsDetailView } from './components/NewsDetailView.tsx'
 
 export const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
       <Routes >
         <Route element={<Layout />}>
           <Route path='/' element={<IndexView />} index/>
+          <Route path="/news/:id" element={<NewsDetailView />} />
           <Route path='/lives' element={<LivesView />} />
           <Route path='/hosts' element={<HostsView />} />
           <Route path='/events' element={<EventsView />} />
